@@ -43,7 +43,7 @@ A máquina alvo foi configurada com:
 
 # Arquitetura do Laboratório
 
-![Arquitetura do laboratório](images/arquitetura-laboratorio.png)
+![Arquitetura do laboratório](arquitetura-laboratorio.png)
 
 ---
 
