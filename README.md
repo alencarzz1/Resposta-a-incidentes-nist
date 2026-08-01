@@ -89,7 +89,7 @@ A máquina alvo foi configurada com:
 
 O parâmetro **-sS** executa um **TCP SYN Scan (Half-Open Scan)**, enviando apenas o pacote SYN para identificar portas abertas sem concluir o Three-Way Handshake.
 
-![Execução do Scan](images/nmap-scan.png)
+![Execução do Scan](nmap-scan.png)
 
 ---
 
@@ -103,7 +103,7 @@ O Splunk Enterprise foi configurado para monitorar continuamente o arquivo de lo
 
 Essa configuração permitiu que todos os eventos gerados pelo Suricata fossem automaticamente indexados no índice **main**, possibilitando consultas em tempo real utilizando a linguagem **SPL**.
 
-![Configuração do Splunk](images/splunk-monitor.png)
+![Configuração do Splunk](splunk-monitor.png)
 
 ---
 
@@ -130,7 +130,7 @@ alert tcp any any -> $HOME_NET any (
 |------------|----------|
 | Regra personalizada | `/etc/suricata/rules/local.rules` |
 
-![Regra do Suricata](images/regra-suricata.png)
+![Regra do Suricata](regra-suricata.png)
 
 ---
 
@@ -150,7 +150,7 @@ index=main alert.signature="LAB SCAN - Possivel Nmap SYN Scan"
 |------------|----------|
 | Filtrar alertas do laboratório | `index=main alert.signature="LAB SCAN - Possivel Nmap SYN Scan"` |
 
-![Consulta no Splunk](images/splunk-consulta.png)
+![Consulta no Splunk](splunk-consulta.png)
 
 ---
 
@@ -158,7 +158,7 @@ index=main alert.signature="LAB SCAN - Possivel Nmap SYN Scan"
 
 Após o scan executado pelo Nmap, o Splunk recebeu os eventos enviados pelo Suricata, registrando corretamente a assinatura criada para o laboratório.
 
-![Alerta Recebido](images/alerta-splunk.png)
+![Alerta Recebido](alerta-splunk.png)
 
 ---
 
@@ -177,8 +177,6 @@ Durante a análise do incidente foram avaliados os seguintes atributos:
 Foi identificado que todos os eventos estavam relacionados ao mesmo endereço IP de origem.
 
 Após a validação das evidências, o incidente foi classificado como um **Verdadeiro Positivo (True Positive)**.
-
-![Eventos no Splunk](images/eventos-splunk.png)
 
 ---
 
@@ -224,7 +222,7 @@ Foi aplicada uma regra de firewall utilizando o **iptables**, bloqueando todo o 
 
 Essa regra descarta todos os pacotes provenientes do endereço IP **192.168.0.6**, impedindo novas tentativas de reconhecimento contra o servidor monitorado.
 
-![Aplicação da regra no iptables](images/iptables-block.png)
+![Aplicação da regra no iptables](iptables-block.png)
 
 ---
 
@@ -238,7 +236,7 @@ Após a aplicação da regra de firewall, um novo **TCP SYN Scan** foi executado
 
 O host alvo deixou de responder às tentativas de conexão provenientes do endereço IP bloqueado, confirmando que a contenção foi aplicada com sucesso.
 
-![Novo scan após bloqueio](images/nmap-after-block.png)
+![Novo scan após bloqueio](nmap-after-block.png)
 
 ---
 
@@ -282,7 +280,7 @@ A consulta SPL utilizada permitiu visualizar apenas os eventos relacionados ao i
 index=main alert.signature="LAB SCAN - Possivel Nmap SYN Scan"
 ```
 
-![Eventos indexados no Splunk](images/splunk-final.png)
+![Eventos indexados no Splunk](splunk-final.png)
 
 ---
 
@@ -298,7 +296,7 @@ O processo executado durante o laboratório seguiu as fases recomendadas pelo **
 | Erradicação | ✅ Concluída |
 | Lições Aprendidas | ✅ Concluída |
 
-![Fluxo do processo](images/nist-process.png)
+![Fluxo do processo](nist-process.png)
 
 ---
 
@@ -350,8 +348,6 @@ Além de reforçar conceitos de monitoramento e resposta a incidentes, o projeto
 Incident-Response-NIST-TCP-SYN-Scan/
 │
 ├── README.md
-│
-├── images/
 │   ├── arquitetura-laboratorio.png
 │   ├── nmap-scan.png
 │   ├── splunk-monitor.png
@@ -367,9 +363,6 @@ Incident-Response-NIST-TCP-SYN-Scan/
 │   ├── splunk-final.png
 │   ├── nist-process.png
 │   └── evidencias.png
-│
-└── rules/
-    └── local.rules
 ```
 
 ---
