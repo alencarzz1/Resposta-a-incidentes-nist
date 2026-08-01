@@ -65,8 +65,8 @@ A máquina alvo foi configurada com:
 | Sistema Operacional | Kubuntu 24.04 LTS |
 | Endereço IP | 192.168.0.7 |
 | Interface | wlp63s0 |
-| Serviço Monitorado | HTTPS |
-| Porta | 8080 |
+| Serviço Monitorado | HTTP |
+| Porta | 8000 |
 
 ---
 
